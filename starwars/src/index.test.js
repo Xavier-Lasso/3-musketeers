@@ -27,7 +27,7 @@ expect.extend({
   returnArray(received) {
     let pass = true;
 	if(typeof random().mock.calls[0][0] === 'number') {
-		if(Array.isArray(received) !== true) {
+		if(Array.isArray(received) !== true && received.length !== random().mock.calls[0][0]) {
 			pass = false;
 		}
 	}
@@ -71,7 +71,7 @@ describe('starwars-names', () => {
     });
 
     test('should return an array of random items if passed a number', () => {
-      expect(starWars.random).returnArray
+      expect(starWars.random(5)).returnArray
     });
   });
 });
